@@ -1,0 +1,90 @@
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created, ready for development
+#   - in-progress: Developer actively working on implementation
+#   - review: Implementation complete, ready for review
+#   - done: Story completed
+
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+
+# Action Item Status:
+#   - open: Committed during a retrospective, not yet addressed
+#   - in-progress: Actively being worked on
+#   - done: Completed
+
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when its first story starts (via build's sprint sync)
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates the next story after the previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+# - Retrospective appends its action items to action_items; the status view surfaces open ones
+generated: 11-25-2026 13:50
+last_updated: 11-25-2026 16:10
+project: gi40-prototype
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+development_status:
+  epic-1: done
+  1-1-project-scaffold-and-quality-gates: done
+  1-2-brand-shell-header-hero-footer-themes: done
+  epic-1-retrospective: optional
+
+  epic-2: done
+  2-1-text-search-with-suggestions-and-auto-correct: done
+  2-2-voice-search: done
+  2-3-photo-search: done
+  2-4-qr-barcode-scan: done
+  2-5-not-found: done
+  epic-2-retrospective: optional
+
+  epic-3: done
+  3-1-leaflet-view-with-version-notices-and-verbatim-text: done
+  3-2-section-navigation: done
+  3-3-listen-to-the-leaflet: done
+  3-4-german-original-language-leaflets: done
+  epic-3-retrospective: optional
+
+  epic-4: done
+  4-1-request-form-with-optional-email: done
+  4-2-request-confirmation-edit-and-undo: done
+  epic-4-retrospective: optional
+
+  epic-5: done
+  5-1-my-medicines: done
+  5-2-delete-my-data: done
+  epic-5-retrospective: optional
+
+  epic-6: done
+  6-1-instructions-page: done
+  6-2-faqs-page: done
+  6-3-contact-page: done
+  6-4-legal-notice-and-privacy-policy: done
+  epic-6-retrospective: optional
+
+  epic-7: done
+  7-1-language-switch-en-de: done
+  7-2-mobile-hamburger-menu: done
+  7-3-live-suggestions-while-typing: done
+  epic-7-retrospective: optional
+
+  epic-8: done
+  8-1-provider-layer-and-api-contract: done
+  8-2-german-market-and-german-leaflets-only: done
+  8-3-search-by-pzn-or-gtin: done
+  8-4-latest-version-with-source-and-freshness: done
+  8-5-service-errors-and-retry: done
+  epic-8-retrospective: optional
+  epic-9: done
+  9-1-user-stories-alignment: done
+  epic-9-retrospective: optional

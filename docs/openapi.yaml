@@ -1,0 +1,107 @@
+openapi: 3.0.3
+info:
+  title: GI 4.0 Leaflet Service
+  version: "1.0.0"
+  description: >
+    Back end for the GI 4.0 website. German-market medicines and German leaflets only, from approved sources only,
+    always the latest approved version. See docs/api-contract.md.
+servers:
+  - url: https://api.example.de
+paths:
+  /v1/medicines/search:
+    get:
+      summary: Search by name, brand, dosage, PZN or GTIN
+      parameters:
+        - { name: q, in: query, required: true, schema: { type: string, minLength: 1 } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 20 } }
+      responses:
+        "200": { description: Matches, content: { application/json: { schema: { $ref: "#/components/schemas/SummaryList" } } } }
+  /v1/medicines/suggest:
+    get:
+      summary: Suggestions while typing
+      parameters:
+        - { name: q, in: query, required: true, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 10, default: 5 } }
+      responses:
+        "200": { description: Suggestions, content: { application/json: { schema: { $ref: "#/components/schemas/SummaryList" } } } }
+  /v1/medicines/lookup:
+    get:
+      summary: Exact lookup by PZN or barcode number
+      parameters:
+        - { name: code, in: query, required: true, schema: { type: string, pattern: "^\\d{7,14}$" } }
+      responses:
+        "200": { description: Found, content: { application/json: { schema: { type: object, properties: { item: { $ref: "#/components/schemas/Summary" } } } } } }
+        "404": { description: Unknown code }
+  /v1/medicines/{id}/leaflet:
+    get:
+      summary: The latest approved leaflet
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Latest approved leaflet, content: { application/json: { schema: { $ref: "#/components/schemas/Leaflet" } } } }
+        "404": { description: No approved leaflet }
+  /v1/recognise/photo:
+    post:
+      summary: Candidates from a photo of the pack (user confirms)
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema: { type: object, required: [image], properties: { image: { type: string, format: binary } } }
+      responses:
+        "200": { description: Candidates, content: { application/json: { schema: { $ref: "#/components/schemas/SummaryList" } } } }
+  /v1/recognise/code:
+    post:
+      summary: Medicine for a scanned QR / Data Matrix / barcode payload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, required: [code], properties: { code: { type: string } } }
+      responses:
+        "200": { description: Found, content: { application/json: { schema: { type: object, properties: { item: { $ref: "#/components/schemas/Summary" } } } } } }
+        "404": { description: Unknown code }
+  /v1/leaflet-requests:
+    post:
+      summary: Ask for a missing leaflet; email optional and only used to notify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, required: [medicine], properties: { medicine: { type: string }, email: { type: string, format: email } } }
+      responses:
+        "202": { description: Accepted }
+components:
+  schemas:
+    Summary:
+      type: object
+      required: [id, name, lang, market, ver, date]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        brand: { type: string }
+        lang: { type: string, enum: [de] }
+        market: { type: string, enum: [DE] }
+        ver: { type: string, example: v3.0 }
+        date: { type: string, format: date }
+        pzn: { type: string }
+        code: { type: string, description: GTIN/EAN }
+    SummaryList:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: "#/components/schemas/Summary" } }
+    Leaflet:
+      allOf:
+        - $ref: "#/components/schemas/Summary"
+        - type: object
+          required: [sections]
+          properties:
+            sections:
+              type: object
+              minProperties: 1
+              additionalProperties: { type: string }
+              description: Verbatim German text, section name to body
+            note: { type: string, description: Optional note from the pharma company }
+            source: { type: string }
+            sourceUrl: { type: string, format: uri, pattern: "^https://" }
+            checkedAt: { type: string, format: date-time }

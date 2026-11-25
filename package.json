@@ -1,0 +1,20 @@
+{
+  "name": "gi40-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GI 4.0 PharmaProtect: responsive web prototype for finding and reading the latest approved patient leaflet.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "jsdom": "31.0.1",
+    "vite": "8.3.8",
+    "vitest": "5.1.2"
+  }
+}

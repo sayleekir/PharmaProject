@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GI 4.0 PharmaProtect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Nunito:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="site">
+  <div class="bar"><div class="in">
+    <button class="logo" id="logo" data-t-aria="GI 4.0 PharmaProtect, home" aria-label="GI 4.0 PharmaProtect, home"><svg viewBox="0 0 348 96" role="img" aria-label="GI 4.0 PharmaProtect" height="56"><image href="assets/cube.png" x="0" y="0" width="98" height="96"/><text x="112" y="62" font-family="'Sui Generis', Nunito, 'Varela Round', Barlow, sans-serif" font-size="64" font-weight="800" style="font-synthesis:none" fill="var(--brand)" textLength="228" lengthAdjust="spacingAndGlyphs">GI 4.0</text><text x="112" y="90" font-size="27" font-weight="400" fill="var(--acc)" textLength="228" lengthAdjust="spacingAndGlyphs">PharmaProtect</text></svg></button>
+    <nav aria-label="Main">
+      <button data-tab="home" data-t="Home">Home</button>
+      <button data-tab="history" data-t="My medicines">My medicines</button>
+      <div class="dd"><button id="morebtn" aria-haspopup="true" aria-expanded="false" aria-controls="moremenu"><span data-t="More">More</span> <svg class="ic ic-sm caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="menu" id="moremenu" hidden>
+          <button data-tab="instructions" data-t="Instructions">Instructions</button>
+          <button data-tab="faq" data-t="FAQs">FAQs</button>
+          <button data-tab="contact" data-t="Contact">Contact</button>
+          <button data-tab="legal" data-t="Legal notice">Legal notice</button>
+          <button data-tab="privacy" data-t="Privacy">Privacy</button>
+        </div></div>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-t-aria="Language">
+      <button data-lang="en" aria-pressed="true" lang="en" title="English">EN</button><span aria-hidden="true">|</span><button data-lang="de" aria-pressed="false" lang="de" title="Deutsch">DE</button>
+    </div>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobilemenu" data-t-aria="Menu" aria-label="Menu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="b-open" d="M4 7h16M4 12h16M4 17h16"/><path class="b-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="mnav" id="mobilemenu" hidden>
+    <nav aria-label="Mobile menu">
+      <button data-tab="home" data-t="Home">Home</button>
+      <button data-tab="history" data-t="My medicines">My medicines</button>
+      <button data-tab="instructions" data-t="Instructions">Instructions</button>
+      <button data-tab="faq" data-t="FAQs">FAQs</button>
+      <button data-tab="contact" data-t="Contact">Contact</button>
+      <button data-tab="legal" data-t="Legal notice">Legal notice</button>
+      <button data-tab="privacy" data-t="Privacy">Privacy</button>
+    </nav>
+  </div>
+  </div>
+  <div class="herob"><p class="k" id="hk"></p><p class="l" id="hl"></p></div>
+  <div class="wrap">
+    <div class="crumb"><button class="btn link" id="back" data-t="← Back" hidden>← Back</button></div>
+    <h1 id="title"></h1>
+    <main id="main"></main>
+  </div>
+  <div id="slot"></div>
+  <footer>
+    <div class="fprod"><div data-t="A product of">A product of</div><b>PHARMAPROTECT SOLUTIONS GMBH</b><div>+49 (0)30 4000 484 00 | contact@pharmaprotect.de</div></div>
+    <div class="fnav"><div class="fcols">
+      <div><h3 data-t="About GI 4.0">About GI 4.0</h3><button data-tab="instructions" data-t="Instructions">Instructions</button> <span>|</span> <button data-tab="faq" data-t="FAQs">FAQs</button></div>
+      <div><h3 data-t="Contact">Contact</h3><button data-tab="contact" data-t="Contacts">Contacts</button> <span>|</span> <button data-tab="contact" data-scroll="loc" data-t="Location">Location</button> <span>|</span> <button data-tab="contact" data-scroll="info" data-t="Info services">Info services</button></div>
+      <div><h3 data-t="Search">Search</h3><button data-tab="home" data-t="Home">Home</button> <span>|</span> <button data-tab="history" data-t="My medicines">My medicines</button></div>
+    </div></div>
+    <div class="fbar"><div><button data-tab="legal" data-t="Legal notice">Legal notice</button> | <button data-tab="privacy" data-t="Privacy">Privacy</button></div><div>© 2026 PharmaProtect Solutions GmbH</div></div>
+  </footer>
+</div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
